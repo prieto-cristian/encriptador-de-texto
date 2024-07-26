@@ -1,0 +1,135 @@
+:root {
+    --color-primario: #F5F1E3;
+    --color-secundario: #050505;
+    --color-terciario: #ED6A5A;
+    --color-cuaternario: #e8e7e7;
+    --fuente-principal: system-ui, sans-serif;
+}
+
+body,
+html {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    font-family: var(--fuente-principal);
+    font-size: 16px;
+} 
+
+/* Inicio de los estilos del encabezado */
+.header {
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 0% 4%;
+    box-shadow: 0px 2px 6px var(--color-terciario);
+}
+.header__nombre-logo{
+    margin: 15px 0px 7px 0px;
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    text-decoration: none;
+}
+.header__menu{
+    width: 100%;
+}
+.header__menu ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.header__menu__enlace{
+    color: var(--color-primario);
+    text-decoration: none;
+}
+/* Fin de los estilos del encabezado */
+
+/* Inicio de los estilos del main */
+.main{
+    padding: 20px 4%;
+}
+.main__titulo-principal{
+    font-size: 2rem;
+    text-align: center;
+}
+.main__encriptador{
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+    padding-top: 50px;
+}
+.main__encriptador__entrada{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.main__encriptador__entrada__texto{
+    font-size: 1.5rem;
+    height: 200px;
+    background-color: transparent;
+    resize: none;
+}
+.main__encriptador__entrada__texto:focus{
+    border: none;
+}
+.main__encriptador__entrada__alerta{
+    font-size: 0.75rem;
+}
+.main__botones{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+.main__boton{
+    height: 67px;
+    border-radius: 50px;
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    border: none;
+    font-weight: bold;
+}
+.fondo-transparente{
+    background-color: transparent;
+    color: var(--color-secundario);
+    border: 1px solid var(--color-secundario)
+}
+
+
+.main__encriptador__salida{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-cuaternario);
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px var(--color-secundario);
+    padding: 2rem;
+}
+
+.main__encriptador__salida > p:first-child{
+    font-size: 1.5rem;
+    color: gray;
+}
+.main__encriptador__salida .main__encriptador__salida__icon{
+    display: none;
+}
+.main__encriptador__salida__texto{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 1rem;
+}
+.texto-destacado{
+    font-size: 1.5rem;
+}
+/* Fin de los estilos del main */
+
+/* Inicio de los estilos del footer */
+.footer{
+    margin-top: 4rem;
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    text-align: center;
+    height: 70px;
+    line-height: 70px;
+}
+/* Fin de los estilos del footer */

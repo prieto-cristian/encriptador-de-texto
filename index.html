@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css" crossorigin="anonymous">
+    <title>Proyecto - Encriptador de Texto</title>
+</head>
+
+<body>
+    <header class="header">
+        <a class="header__nombre-logo" href="#">Cristian <strong class="titulo-destacado">Prieto</strong></a>
+        <nav class="header__menu">
+            <ul>
+                <li class="header__menu__item"><a class="header__menu__enlace" href="index.html">Inicio</a></li>
+                <li class="header__menu__item"><a class="header__menu__enlace" href="#">Sobre mi</a></li>
+                <li class="header__menu__item"><a class="header__menu__enlace" href="#">Proyectos</a></li>
+                <li class="header__menu__item"><a class="header__menu__enlace" href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <h1 class="main__titulo-principal">Encriptador de Texto</h1>
+        <section class="main__encriptador">
+            <section class="main__encriptador__entrada">
+                <textarea name="entrada-texto" class="main__encriptador__entrada__texto"
+                    placeholder="Ingrese el texto aqui"></textarea>
+                <p class="main__encriptador__entrada__alerta"><i class="fa-solid fa-circle-info"></i> Solo
+                    letras y
+                    minúsculas y
+                    sin acentos</p>
+                <div class="main__botones">
+                    <button class="main__boton">Encriptar</button>
+                    <button class="main__boton fondo-transparente">Desencriptar</button>
+                </div>
+            </section>
+            <section class="main__encriptador__salida">
+                <p class="main__encriptador__salida__texto"></p>
+                <i class="fa-solid fa-rectangle-xmark main__encriptador__salida__icon"></i>
+                <p class="main__encriptador__salida__texto">
+                    <strong class="texto-destacado">
+                        Ningún mensaje fue encontrado
+                    </strong>
+                    Ingresa el texto que desees encriptar o desencriptar
+                </p>
+                <button hidden disabled class="main__boton fondo-transparente">Copiar</button>
+            </section>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__texto">Desarrollado por Cristian Prieto</p>
+    </footer>
+</body>
+
+</html>
