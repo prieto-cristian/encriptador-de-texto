@@ -26,19 +26,19 @@
         <h1 class="main__titulo-principal">Encriptador de Texto</h1>
         <section class="main__encriptador">
             <section class="main__encriptador__entrada">
-                <textarea name="entrada-texto" class="main__encriptador__entrada__texto"
+                <textarea id="entrada-texto" class="main__encriptador__entrada__texto"
                     placeholder="Ingrese el texto aqui"></textarea>
                 <p class="main__encriptador__entrada__alerta"><i class="fa-solid fa-circle-info"></i> Solo
                     letras y
                     minúsculas y
                     sin acentos</p>
                 <div class="main__botones">
-                    <button class="main__boton">Encriptar</button>
-                    <button class="main__boton fondo-transparente">Desencriptar</button>
+                    <button class="main__boton" onclick="encriptarYMostrarPalabra()">Encriptar</button>
+                    <button class="main__boton fondo-transparente" onclick="desencriptarYMostrarPalabra()">Desencriptar</button>
                 </div>
             </section>
             <section class="main__encriptador__salida">
-                <p class="main__encriptador__salida__texto"></p>
+                <p class="main__encriptador__salida__texto" id="salida-texto"></p>
                 <i class="fa-solid fa-rectangle-xmark main__encriptador__salida__icon"></i>
                 <p class="main__encriptador__salida__texto">
                     <strong class="texto-destacado">
@@ -52,7 +52,9 @@
     </main>
     <footer class="footer">
         <p class="footer__texto">Desarrollado por Cristian Prieto</p>
+        <a class="footer__enlace" href="https://www.linkedin.com/in/prieto-cristian/"><i class="fa-brands fa-linkedin footer__icon"></i> Linkedin</a>
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
