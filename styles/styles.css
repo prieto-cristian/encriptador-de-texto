@@ -69,6 +69,7 @@ html {
     height: 200px;
     background-color: transparent;
     resize: none;
+    padding-left: 1%;
 }
 .main__encriptador__entrada__texto:focus{
     border: none;
@@ -97,27 +98,33 @@ html {
 
 
 .main__encriptador__salida{
-    display: flex;
-    flex-direction: column;
     background-color: var(--color-cuaternario);
     border-radius: 25px;
     box-shadow: 1px 1px 3px var(--color-secundario);
     padding: 2rem;
 }
-
-.main__encriptador__salida > p:first-child{
+.main__encriptador__salida__conTextoIngresado{
+    display: none;
+}
+.main__encriptador__salida__conTextoIngresado .main__boton{
+    width: 100%;
+}
+.main__encriptador__salida__conTextoIngresado__texto{
     font-size: 1.5rem;
-    color: gray;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-sizing: border-box;
 }
 .main__encriptador__salida .main__encriptador__salida__icon{
     display: none;
 }
-.main__encriptador__salida__texto{
+.main__encriptador__salida__sinTextoIngresado__mensaje{
     display: flex;
     flex-direction: column;
     text-align: center;
     row-gap: 1rem;
 }
+
 .texto-destacado{
     font-size: 1.5rem;
 }

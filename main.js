@@ -4,14 +4,6 @@ const letra_a_encriptada = "ai";
 const letra_o_encriptada = "ober";
 const letra_u_encriptada = "ufat";
 
-/* Pre-condiciones
-    Debe funcionar solo con letras minúsculas
-    No deben ser utilizados letras con acentos ni caracteres especiales
-    Debe ser posible convertir una palabra para la versión encriptada también devolver una palabra encriptada para su versión original.
-    
-    Entrada: gato, Salida: gaitober
-*/
-
 const esUnaVocal = (unaLetra) => {
     if (unaLetra == "a" || unaLetra == "e" || unaLetra == "i" || unaLetra == "o" || unaLetra == "u") {
         return true;
@@ -19,41 +11,26 @@ const esUnaVocal = (unaLetra) => {
     return false;
 }
 
-const encriptar = (unaLetra) => {
+const encriptarLetra = (unaLetra) => {
     let letraEncriptada = "";
     if (unaLetra == "a") {
         letraEncriptada = letra_a_encriptada;
-    } else {
-        if (unaLetra == "e") {
-            letraEncriptada = letra_e_encriptada
-        } else {
-            if (unaLetra == "i") {
-                letraEncriptada = letra_i_encriptada;
-            } else {
-                if (unaLetra == "o") {
-                    letraEncriptada = letra_o_encriptada;
-                } else {
-                    letraEncriptada = letra_u_encriptada;
-                }
-            }
-        }
     }
-
+    if (unaLetra == "e") {
+        letraEncriptada = letra_e_encriptada;
+    }
+    if (unaLetra == "i") {
+        letraEncriptada = letra_i_encriptada;
+    }
+    if (unaLetra == "o") {
+        letraEncriptada = letra_o_encriptada;
+    }
+    if (unaLetra == "u") {
+        letraEncriptada = letra_u_encriptada;
+    }
     return letraEncriptada
 }
-const encriptarPalabra = (unaPalabra) => {
-    let palabraEncriptada = "";
-    let indice = 0;
-    while (indice < unaPalabra.length) {
-        if (esUnaVocal(unaPalabra[indice])) {
-            palabraEncriptada = palabraEncriptada.concat(encriptar(unaPalabra[indice]));
-        } else {
-            palabraEncriptada = palabraEncriptada.concat(unaPalabra[indice]);
-        }
-        indice++;
-    }
-    return palabraEncriptada;
-}
+
 const extraerParteEncriptada = (unaPalabra) => {
     let parteEncriptada = "";
     if (unaPalabra.startsWith(letra_a_encriptada)) {
@@ -67,33 +44,45 @@ const extraerParteEncriptada = (unaPalabra) => {
     }
     if (unaPalabra.startsWith(letra_o_encriptada)) {
         parteEncriptada = letra_o_encriptada;
-    } 
+    }
     if (unaPalabra.startsWith(letra_u_encriptada)) {
         parteEncriptada = letra_u_encriptada;
     }
     return parteEncriptada;
 }
 
-const desencriptar = (parteEncriptada) => {
+const desencriptarLetra = (parteEncriptada) => {
+    // Esta funcion recibe una cadena que contiene solo una letra como resultado de la desencriptacion
     let res = "";
     if (parteEncriptada == letra_a_encriptada) {
         res = "a";
-    } else {
-        if (parteEncriptada == letra_e_encriptada) {
-            res = "e";
-        } else {
-            if (parteEncriptada == letra_i_encriptada) {
-                res = "i";
-            } else {
-                if (parteEncriptada == letra_o_encriptada) {
-                    res = "o";
-                } else {
-                    res = "u";
-                }
-            }
-        }
+    }
+    if (parteEncriptada == letra_e_encriptada) {
+        res = "e";
+    }
+    if (parteEncriptada == letra_i_encriptada) {
+        res = "i";
+    }
+    if (parteEncriptada == letra_o_encriptada) {
+        res = "o";
+    }
+    if (parteEncriptada == letra_u_encriptada) {
+        res = "u";
     }
     return res;
+}
+const encriptarPalabra = (unaPalabra) => {
+    let palabraEncriptada = "";
+    let indice = 0;
+    while (indice < unaPalabra.length) {
+        if (esUnaVocal(unaPalabra[indice])) {
+            palabraEncriptada = palabraEncriptada.concat(encriptarLetra(unaPalabra[indice]));
+        } else {
+            palabraEncriptada = palabraEncriptada.concat(unaPalabra[indice]);
+        }
+        indice++;
+    }
+    return palabraEncriptada;
 }
 
 const desencriptarPalabra = (unaPalabra) => {
@@ -102,10 +91,10 @@ const desencriptarPalabra = (unaPalabra) => {
     while (indice < unaPalabra.length) {
         if (esUnaVocal(unaPalabra[indice])) {
             let parteEncriptada = extraerParteEncriptada(unaPalabra.slice(indice));
-            if(parteEncriptada.length != 0){
-                palabraDesencriptada = palabraDesencriptada.concat(desencriptar(parteEncriptada));
-                indice += parteEncriptada.length;    
-            }else{
+            if (parteEncriptada.length != 0) {
+                palabraDesencriptada = palabraDesencriptada.concat(desencriptarLetra(parteEncriptada));
+                indice += parteEncriptada.length;
+            } else {
                 palabraDesencriptada = palabraDesencriptada.concat(unaPalabra[indice]);
                 indice++;
             }
@@ -117,17 +106,70 @@ const desencriptarPalabra = (unaPalabra) => {
     return palabraDesencriptada;
 }
 
-
-const encriptarYMostrarPalabra = () =>{
-    let elementoHTML = document.getElementById('entrada-texto');
-    let elementoHTMLMostrarTexto = document.getElementById('salida-texto');
-    const palabraEncriptada = encriptarPalabra(elementoHTML.value);
-    elementoHTMLMostrarTexto.innerHTML = palabraEncriptada;
+const esPalabraValida = (unaCadena) => {
+    // El operador not esta para contradecir el booleano que retorna test.\
+    // cuando es true indica que hay caracteres que no pertenecen al rango establecido a-z.
+    const valoresNoPermitidos = /[^a-z\s]/g;
+    let res = true;
+    if (valoresNoPermitidos.test(unaCadena)) {
+        res = false;
+    }
+    return res;
 }
 
-const desencriptarYMostrarPalabra = () =>{
+const mostrarPalabra = (unElementoHTML, unaPalabra) => {
+    unElementoHTML.innerHTML = unaPalabra;
+    document.getElementById('mostrar-y-ocultar-alerta').style.display = 'none';
+    document.getElementById('mostrar-y-ocultar-salida').style.display = 'block';
+}
+
+const mostrarMensajeIngresarTexto = () => {
+    document.getElementById('mostrar-y-ocultar-alerta').style.display = "block";
+    document.getElementById('mostrar-y-ocultar-salida').style.display = 'none';
+}
+const esVacio = (unaCadena) => {
+    return unaCadena == "";
+}
+const mostrarMensajeIngresarCaracteresValidos = () => {
+    alert("Recuerda que solo puedes ingresar letras minúsculas y sin acentos");
+}
+const encriptar = () => {
     let elementoHTML = document.getElementById('entrada-texto');
-    let elementoHTMLMostrarTexto = document.getElementById('salida-texto');
-    const palabraDesencriptada = desencriptarPalabra(elementoHTML.value);
-    elementoHTMLMostrarTexto.innerHTML = palabraDesencriptada;
+    if (esVacio(elementoHTML.value)) {
+        mostrarMensajeIngresarTexto();
+    } else {
+        if (esPalabraValida(elementoHTML.value)) {
+            let elementoHTMLMostrarTexto = document.getElementById('salida-texto');
+            const palabraEncriptada = encriptarPalabra(elementoHTML.value);
+            mostrarPalabra(elementoHTMLMostrarTexto, palabraEncriptada);
+        } else {
+            mostrarMensajeIngresarCaracteresValidos();
+        }
+    }
+}
+
+const desencriptar = () => {
+    let elementoHTML = document.getElementById('entrada-texto');
+    if (esVacio(elementoHTML.value)) {
+        mostrarMensajeIngresarTexto();
+    } else {
+        if (esPalabraValida(elementoHTML.value)) {
+            let elementoHTMLMostrarTexto = document.getElementById('salida-texto');
+            const palabraEncriptada = desencriptarPalabra(elementoHTML.value);
+            mostrarPalabra(elementoHTMLMostrarTexto, palabraEncriptada);
+        } else {
+            mostrarMensajeIngresarCaracteresValidos();
+        }
+    }
+}
+
+
+const copiarTexto = async () => {
+    let elementoHTML = document.getElementById('salida-texto');
+    let textoACopiar = elementoHTML.textContent;
+    try {
+        await navigator.clipboard.writeText(textoACopiar);
+    } catch (err) {
+        alert("Error al copiar el texto");
+    }
 }
