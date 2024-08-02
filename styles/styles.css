@@ -104,6 +104,10 @@ html {
     border: none;
     font-weight: bold;
     width: 100%;
+    transition: all 200ms;
+}
+.main__boton:active{
+    box-shadow: 0px 0px 12px var(--color-terciario);
 }
 .fondo-transparente{
     background-color: transparent;
@@ -242,6 +246,9 @@ html {
     }
     .main__boton:hover{
         box-shadow: 2px 2px 4px var(--color-terciario);
+    }
+    .main__boton:active{
+        box-shadow: none;
     }
     .main__encriptador__salida__sinTextoIngresado{
         height: 100%;
