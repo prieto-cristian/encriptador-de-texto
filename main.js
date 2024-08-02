@@ -120,11 +120,12 @@ const esPalabraValida = (unaCadena) => {
 const mostrarPalabra = (unElementoHTML, unaPalabra) => {
     unElementoHTML.innerHTML = unaPalabra;
     document.getElementById('mostrar-y-ocultar-alerta').style.display = 'none';
-    document.getElementById('mostrar-y-ocultar-salida').style.display = 'block';
+    document.getElementById('mostrar-y-ocultar-salida').setAttribute("style", "display: flex;flex-direction: column;row-gap: 1rem;");
+    ajustarContenidoSalida();
 }
 
 const mostrarMensajeIngresarTexto = () => {
-    document.getElementById('mostrar-y-ocultar-alerta').style.display = "block";
+    document.getElementById('mostrar-y-ocultar-alerta').style.display = "flex";
     document.getElementById('mostrar-y-ocultar-salida').style.display = 'none';
 }
 const esVacio = (unaCadena) => {
@@ -173,3 +174,21 @@ const copiarTexto = async () => {
         alert("Error al copiar el texto");
     }
 }
+
+// El siguiente codigo se encarga de dimensionar los textarea por donde se ingresan o muestran los mensajes.
+const ajustarContenidoEntrada = () =>{
+    const textarea = document.getElementById('entrada-texto');
+    textarea.addEventListener("keyup", e =>{
+        textarea.style.height = "auto";
+        let scHeight = e.target.scrollHeight;
+        textarea.style.height = `${scHeight}px`;
+    });
+}
+const ajustarContenidoSalida = () =>{
+    const textarea = document.getElementById('salida-texto');
+    if (textarea) {
+        textarea.style.height = "auto"; // Restablece la altura para obtener el scrollHeight correcto
+        textarea.style.height = `${textarea.scrollHeight}px`; // Establece la altura en función del contenido
+    }
+}
+ajustarContenidoEntrada();
