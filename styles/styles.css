@@ -194,7 +194,7 @@ html {
         padding: 40px 40px;
     }
     .main__encriptador__entrada__texto{
-        min-height: 600px;
+        min-height: 500px;
         border: none;
     }
     .main__botones{
@@ -208,6 +208,9 @@ html {
     }
 }
 @media (min-width: 1440px){
+    .main{
+        height: 100dvh;
+    }
     .main__encriptador__salida .main__encriptador__salida__icon{
         color: var(--color-secundario);
         display: block;
